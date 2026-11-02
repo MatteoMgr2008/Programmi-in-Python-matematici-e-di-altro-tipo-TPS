@@ -1,0 +1,16 @@
+flowchart TD
+    U[Utente] -->|HTTPS| CF[CloudFront / frontend web]
+    CF --> S3[S3: file statici]
+    U -->|HTTPS API| ALB[Application Load Balancer]
+    ALB --> API[MiniPay API - ECS Fargate]
+    API --> AUTH[Autenticazione]
+    API --> WAL[Portafoglio]
+    API --> PAY[Pagamenti]
+    API --> NOT[Notifiche]
+    AUTH --> ORA[(Oracle aziendale / RDS for Oracle)]
+    WAL --> ORA
+    PAY --> ORA
+    NOT --> ORA
+    PAY -->|HTTPS API| CB[Fornitore esterno Core Banking]
+    API -. log .-> CW[CloudWatch]
+    API -. segreti .-> SM[Secrets Manager]

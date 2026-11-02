@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniPay — Wallet digitale demo</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">M</span> MiniPay</a>
+    <span class="demo-label">DEMO DIDATTICA</span>
+  </header>
+
+  <main class="shell">
+    <section id="auth-view" class="auth-layout">
+      <div class="intro">
+        <p class="eyebrow">IL TUO WALLET DIGITALE</p>
+        <h1>Pagamenti semplici.<br><span>Un'esperienza chiara.</span></h1>
+        <p class="muted">Un piccolo sistema dimostrativo con account, saldo, pagamenti e storico delle transazioni.</p>
+        <div class="feature-list">
+          <div><span class="feature-icon">↔</span><span><b>Trasferimenti</b><small>Invia denaro virtuale ad altri utenti demo.</small></span></div>
+          <div><span class="feature-icon">◷</span><span><b>Storico</b><small>Consulta gli ultimi movimenti del wallet.</small></span></div>
+          <div><span class="feature-icon">⌁</span><span><b>Integrazione bancaria</b><small>Il backend contatta un servizio core banking simulato.</small></span></div>
+        </div>
+      </div>
+      <div class="auth-card">
+        <div class="tabs">
+          <button class="tab active" data-tab="login">Accedi</button>
+          <button class="tab" data-tab="register">Crea account</button>
+        </div>
+        <form id="login-form" class="form">
+          <h2>Bentornato</h2><p class="muted">Accedi al tuo account MiniPay.</p>
+          <label>Email<input type="email" id="login-email" required autocomplete="email" placeholder="tu@email.it"></label>
+          <label>Password<input type="password" id="login-password" required minlength="8" autocomplete="current-password" placeholder="Almeno 8 caratteri"></label>
+          <button class="primary full" type="submit">Accedi <span>→</span></button>
+        </form>
+        <form id="register-form" class="form hidden">
+          <h2>Inizia con MiniPay</h2><p class="muted">Crea un account per provare il sistema.</p>
+          <label>Nome<input type="text" id="register-name" required minlength="2" maxlength="60" placeholder="Mario Rossi"></label>
+          <label>Email<input type="email" id="register-email" required autocomplete="email" placeholder="tu@email.it"></label>
+          <label>Password<input type="password" id="register-password" required minlength="8" autocomplete="new-password" placeholder="Almeno 8 caratteri"></label>
+          <button class="primary full" type="submit">Crea account <span>→</span></button>
+        </form>
+        <p id="auth-message" class="message" role="status"></p>
+        <p class="fine-print">Solo denaro virtuale. Non inserire password reali o dati bancari.</p>
+      </div>
+    </section>
+
+    <section id="app-view" class="hidden">
+      <div class="welcome-row">
+        <div><p class="eyebrow">PANORAMICA</p><h1>Ciao, <span id="user-name">utente</span></h1><p class="muted">Ecco cosa succede nel tuo wallet.</p></div>
+        <button id="logout-button" class="secondary">Esci ↗</button>
+      </div>
+      <div class="dashboard-grid">
+        <article class="balance-card">
+          <div class="balance-top"><span>Saldo disponibile</span><span class="balance-chip">EUR · DEMO</span></div>
+          <div class="balance-amount"><span>€</span><strong id="balance">0,00</strong></div>
+          <p>Saldo virtuale del tuo account MiniPay</p>
+          <div class="balance-bottom"><span>Wallet personale</span><span>● Attivo</span></div>
+        </article>
+        <article class="send-card">
+          <div class="card-heading"><div><p class="eyebrow">NUOVA OPERAZIONE</p><h2>Invia denaro</h2></div><span class="round-icon">↗</span></div>
+          <form id="payment-form" class="form compact">
+            <label>Email destinatario<input type="email" id="recipient-email" required placeholder="destinatario@email.it"></label>
+            <label>Importo (€)<input type="number" id="amount" required min="0.01" max="50000" step="0.01" placeholder="25,00"></label>
+            <button class="primary full" type="submit">Conferma pagamento <span>→</span></button>
+          </form>
+          <p id="payment-message" class="message" role="status"></p>
+        </article>
+      </div>
+      <div class="lower-grid">
+        <article class="panel">
+          <div class="panel-heading"><div><h2>Transazioni recenti</h2><p class="muted">Gli ultimi movimenti del tuo wallet.</p></div><span class="panel-icon">⇄</span></div>
+          <div id="transactions" class="transaction-list"><p class="empty">Caricamento movimenti…</p></div>
+        </article>
+        <article class="panel notifications-panel">
+          <div class="panel-heading"><div><h2>Notifiche</h2><p class="muted">Aggiornamenti del tuo account.</p></div><span class="panel-icon">♧</span></div>
+          <div id="notifications" class="notification-list"><p class="empty">Caricamento notifiche…</p></div>
+        </article>
+      </div>
+      <p class="disclaimer">MiniPay è un progetto didattico: i trasferimenti sono virtuali e il core banking è simulato.</p>
+    </section>
+    <div id="toast" class="toast hidden" role="status"></div>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

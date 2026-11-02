@@ -1,0 +1,1 @@
+"""Integrazioni con sistemi esterni."""

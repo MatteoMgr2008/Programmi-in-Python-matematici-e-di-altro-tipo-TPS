@@ -1,0 +1,10 @@
+-- Active: 1793339998093@@127.0.0.1@3306@mysql
+CREATE DATABASE IF NOT EXISTS minipay
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
+
+CREATE USER IF NOT EXISTS 'minipay_user'@'127.0.0.1'
+    IDENTIFIED BY 'Test1234';
+
+GRANT ALL PRIVILEGES ON minipay.* TO 'minipay_user'@'127.0.0.1';
+FLUSH PRIVILEGES;
